@@ -85,6 +85,29 @@ robot_controller.wait_for_scripts_to_end() # Do not exit the test firmware while
                                            # this should never return.
 ```
 
+How to create a tester SD card
+------------------------------
+
+Flash a new SD card with the [v1164](https://github.com/STEAM-Academy-PRO/revolution-robotics-pi-os/releases/tag/v1664) image. Place the SD card into a robot and boot it up.
+Connect to the robot according to [the instructions](https://github.com/STEAM-Academy-PRO/revolution-robotics-robot-mind/blob/main/docs/pi/connect-ssh.md)
+
+Once connected via SSH, run the following commands:
+
+```
+sudo systemctl stop revvy
+sudo mount -o rw,remount /
+sudo rm -rf /home/pi/RevvyFramework/default/packages/*
+sudo chmod 777 /home/pi/RevvyFramework/default/packages
+```
+
+Then copy (e.g. by using the Secure FTP Total Commander extension) the tester directory of your
+choice to `/home/pi/RevvyFramework/default/packages/`. For example, you should end up with
+`/home/pi/RevvyFramework/default/packages/Distance`.
+
+> TODO: we could provide once-click setup scripts based on pi-firmware's `x.py`
+
+After all this, you can `sudo reboot` the pi and it should start the test firmware.
+
 Motor
 -----
 
@@ -135,11 +158,11 @@ The operator then covers the sensor's transducers with their hand, and observes 
 the LED ring no LEDs are lit. Then the operator distances their hand from the sensor
 and observes that the farther their hand is, the more LEDs are lit.
 
-- Passing: when the sensor is covered, the LED ring displays 0 lit LEDs. When fully uncovered, the
-  LED ring has all 12 LEDs lit. When the operator moves their hand up and down in front of the sensor,
-  the number of lit LEDs changes.
+- Passing: when the sensor is covered, the LED ring displays 0 or 1 lit LEDs. When fully uncovered,
+  the LED ring has all 12 LEDs lit. When the operator moves their hand up and down in front of the
+  sensor, the number of lit LEDs changes.
 - Failure:
-  - The LED ring has lit LEDs when the sensor is fully covered.
+  - The LED ring has more than one lit LED when the sensor is fully covered.
   - The LED ring has unlit LEDs when the sensor is fully uncovered.
   - The number of lit LEDs does not follow the distance of the operator's hand.
 
