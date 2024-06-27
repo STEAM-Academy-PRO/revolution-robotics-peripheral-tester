@@ -45,6 +45,8 @@ if __name__ == "__main__":
     with ProgrammedRobotController(robot_manager) as robot_controller:
         config = RobotConfig()
         config.add_motor_from_json({"type": 1, "name": "motor1"})
+        config.add_motor_from_json({"type": 1, "name": "motor2"})
+        config.add_motor_from_json({"type": 1, "name": "motor3"})
         config.process_script(
             {
                 "assignments": {"buttons": [{"id": 1, "priority": 0}]},
