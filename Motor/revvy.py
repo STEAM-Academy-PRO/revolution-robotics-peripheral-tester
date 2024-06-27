@@ -51,24 +51,53 @@ if __name__ == "__main__":
                 "pythonCode": b64_encode_str(
                     """import time
 
-
+robot.led.set(leds=[1,2,3,4,5,6,7,8,9,10,11,12], color='#ffcc00')
 while True:
   robot.motors["motor1"].spin(direction=Motor.DIRECTION_FWD, rotation=30, unit_rotation=Motor.UNIT_SPEED_RPM)
-  time.sleep(1)
-  if (robot.motors["motor1"].speed >= 25) and (robot.motors["motor1"].speed <= 35):
-    robot.led.set(leds=[1,2,3,4,5,6,7,8,9,10,11,12], color='#009900')
-  else:
-    robot.led.set(leds=[1,2,3,4,5,6,7,8,9,10,11,12], color='#990000')
-  time.sleep(1)
-  robot.motors["motor1"].spin(direction=Motor.DIRECTION_BACK, rotation=30, unit_rotation=Motor.UNIT_SPEED_RPM)
-  time.sleep(1)
-  if (robot.motors["motor1"].speed >= -35) and (robot.motors["motor1"].speed <= -25):
-    robot.led.set(leds=[1,2,3,4,5,6,7,8,9,10,11,12], color='#009900')
-  else:
-    robot.led.set(leds=[1,2,3,4,5,6,7,8,9,10,11,12], color='#990000')
-  time.sleep(1)
-  time.sleep(0.05)  # allow other threads to run
+  robot.motors["motor2"].spin(direction=Motor.DIRECTION_FWD, rotation=85, unit_rotation=Motor.UNIT_SPEED_RPM)
+  robot.motors["motor3"].spin(direction=Motor.DIRECTION_FWD, rotation=135, unit_rotation=Motor.UNIT_SPEED_RPM)  
+  
+  time.sleep(3)
 
+  if (robot.motors["motor1"].speed >= 25) and (robot.motors["motor1"].speed <= 35):
+    robot.led.set(leds=[1,2], color='#33cc00')
+  else:
+    robot.led.set(leds=[1,2], color='#ff0000')
+
+  if (robot.motors["motor2"].speed >= 80) and (robot.motors["motor2"].speed <= 90):
+    robot.led.set(leds=[3,4], color='#33cc00')
+  else:
+    robot.led.set(leds=[3,4], color='#ff0000')
+
+  if (robot.motors["motor3"].speed >= 130) and (robot.motors["motor3"].speed <= 140):
+    robot.led.set(leds=[5,6], color='#33cc00')
+  else:
+    robot.led.set(leds=[5,6], color='#ff0000')
+
+  time.sleep(1)
+  
+  robot.motors["motor1"].spin(direction=Motor.DIRECTION_BACK, rotation=30, unit_rotation=Motor.UNIT_SPEED_RPM)
+  robot.motors["motor2"].spin(direction=Motor.DIRECTION_BACK, rotation=85, unit_rotation=Motor.UNIT_SPEED_RPM)
+  robot.motors["motor3"].spin(direction=Motor.DIRECTION_BACK, rotation=135, unit_rotation=Motor.UNIT_SPEED_RPM)
+
+  time.sleep(3)
+
+  if (robot.motors["motor1"].speed >= -35) and (robot.motors["motor1"].speed <= -25):
+    robot.led.set(leds=[11,12], color='#33cc00')
+  else:
+    robot.led.set(leds=[11,12], color='#ff0000')
+
+  if (robot.motors["motor2"].speed >= -90) and (robot.motors["motor2"].speed <= -80):
+    robot.led.set(leds=[9,10], color='#33cc00')
+  else:
+    robot.led.set(leds=[9,10], color='#ff0000')
+
+  if (robot.motors["motor3"].speed >= -140) and (robot.motors["motor3"].speed <= -130):
+    robot.led.set(leds=[7,8], color='#33cc00')
+  else:
+    robot.led.set(leds=[7,8], color='#ff0000')
+
+  time.sleep(0.05)  # allow other threads to run
 
 """
                 ),
