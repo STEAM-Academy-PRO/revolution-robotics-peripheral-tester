@@ -62,8 +62,8 @@ while True:
   robot.motors["motor2"].spin(direction=Motor.DIRECTION_FWD, rotation=85, unit_rotation=Motor.UNIT_SPEED_RPM)
   robot.motors["motor3"].spin(direction=Motor.DIRECTION_FWD, rotation=135, unit_rotation=Motor.UNIT_SPEED_RPM)  
   robot.motors["motor4"].spin(direction=Motor.DIRECTION_FWD, rotation=10, unit_rotation=Motor.UNIT_SPEED_RPM)
-  robot.motors["motor5"].spin(direction=Motor.DIRECTION_FWD, rotation=90, unit_rotation=Motor.UNIT_SPEED_RPM)
-  robot.motors["motor6"].spin(direction=Motor.DIRECTION_FWD, rotation=150, unit_rotation=Motor.UNIT_SPEED_RPM)  
+  robot.motors["motor5"].spin(direction=Motor.DIRECTION_FWD, rotation=75, unit_rotation=Motor.UNIT_SPEED_RPM)
+  robot.motors["motor6"].spin(direction=Motor.DIRECTION_FWD, rotation=120, unit_rotation=Motor.UNIT_SPEED_RPM)  
   
   time.sleep(3)
 
@@ -87,12 +87,12 @@ while True:
   else:
     robot.led.set(leds=[11], color='#ff0000')
 
-  if (robot.motors["motor5"].speed >= 85) and (robot.motors["motor5"].speed <= 95):
+  if (robot.motors["motor5"].speed >= 70) and (robot.motors["motor5"].speed <= 80):
     robot.led.set(leds=[9], color='#33cc00')
   else:
     robot.led.set(leds=[9], color='#ff0000')
 
-  if (robot.motors["motor6"].speed >= 145) and (robot.motors["motor6"].speed <= 155):
+  if (robot.motors["motor6"].speed >= 115) and (robot.motors["motor6"].speed <= 125):
     robot.led.set(leds=[7], color='#33cc00')
   else:
     robot.led.set(leds=[7], color='#ff0000')
@@ -103,8 +103,8 @@ while True:
   robot.motors["motor2"].spin(direction=Motor.DIRECTION_BACK, rotation=85, unit_rotation=Motor.UNIT_SPEED_RPM)
   robot.motors["motor3"].spin(direction=Motor.DIRECTION_BACK, rotation=135, unit_rotation=Motor.UNIT_SPEED_RPM)
   robot.motors["motor4"].spin(direction=Motor.DIRECTION_BACK, rotation=10, unit_rotation=Motor.UNIT_SPEED_RPM)
-  robot.motors["motor5"].spin(direction=Motor.DIRECTION_BACK, rotation=90, unit_rotation=Motor.UNIT_SPEED_RPM)
-  robot.motors["motor6"].spin(direction=Motor.DIRECTION_BACK, rotation=150, unit_rotation=Motor.UNIT_SPEED_RPM)
+  robot.motors["motor5"].spin(direction=Motor.DIRECTION_BACK, rotation=75, unit_rotation=Motor.UNIT_SPEED_RPM)
+  robot.motors["motor6"].spin(direction=Motor.DIRECTION_BACK, rotation=120, unit_rotation=Motor.UNIT_SPEED_RPM)
 
   time.sleep(3)
 
@@ -128,12 +128,12 @@ while True:
   else:
     robot.led.set(leds=[12], color='#ff0000')
 
-  if (robot.motors["motor5"].speed >= -95) and (robot.motors["motor5"].speed <= -85):
+  if (robot.motors["motor5"].speed >= -80) and (robot.motors["motor5"].speed <= -70):
     robot.led.set(leds=[10], color='#33cc00')
   else:
     robot.led.set(leds=[10], color='#ff0000')
 
-  if (robot.motors["motor6"].speed >= -155) and (robot.motors["motor6"].speed <= -145):
+  if (robot.motors["motor6"].speed >= -125) and (robot.motors["motor6"].speed <= -115):
     robot.led.set(leds=[8], color='#33cc00')
   else:
     robot.led.set(leds=[8], color='#ff0000')
