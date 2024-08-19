@@ -44,19 +44,37 @@ if __name__ == "__main__":
 
     with ProgrammedRobotController(robot_manager) as robot_controller:
         config = RobotConfig()
-        config.add_sensor_from_json({"type": 2, "name": "button"})
+        config.add_sensor_from_json({"type": 2, "name": "button1"})
+        config.add_sensor_from_json({"type": 2, "name": "button2"})
+        config.add_sensor_from_json({"type": 2, "name": "button3"})
+        config.add_sensor_from_json({"type": 2, "name": "button4"})
         config.process_script(
             {
                 "assignments": {"buttons": [{"id": 1, "priority": 0}]},
                 "pythonCode": b64_encode_str(
                     """import time
 
-
 while True:
-    if robot.sensors["button"].read():
-        robot.led.set(leds=[1,2,3,4,5,6,7,8,9,10,11,12], color='#009900')
+    if robot.sensors["button1"].read():
+        robot.led.set(leds=[1,2,3], color='#009900')
     else:
-        robot.led.set(leds=[1,2,3,4,5,6,7,8,9,10,11,12], color='#000000')
+        robot.led.set(leds=[1,2,3], color='#000000')
+
+    if robot.sensors["button2"].read():
+        robot.led.set(leds=[4,5,6], color='#009900')
+    else:
+        robot.led.set(leds=[4,5,6], color='#000000')
+
+    if robot.sensors["button3"].read():
+        robot.led.set(leds=[7,8,9], color='#009900')
+    else:
+        robot.led.set(leds=[7,8,9], color='#000000')
+
+    if robot.sensors["button4"].read():
+        robot.led.set(leds=[10,11,12], color='#009900')
+    else:
+        robot.led.set(leds=[10,11,12], color='#000000')
+
     time.sleep(0.05)  # allow other threads to run
 
 """

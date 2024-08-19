@@ -82,17 +82,17 @@ while True:
   else:
     robot.led.set(leds=[5], color='#ff0000')
 
-  if (robot.motors["motor4"].speed >= 5) and (robot.motors["motor1"].speed <= 15):
+  if (robot.motors["motor4"].speed >= 5) and (robot.motors["motor4"].speed <= 15):
     robot.led.set(leds=[11], color='#33cc00')
   else:
     robot.led.set(leds=[11], color='#ff0000')
 
-  if (robot.motors["motor5"].speed >= 85) and (robot.motors["motor2"].speed <= 95):
+  if (robot.motors["motor5"].speed >= 85) and (robot.motors["motor5"].speed <= 95):
     robot.led.set(leds=[9], color='#33cc00')
   else:
     robot.led.set(leds=[9], color='#ff0000')
 
-  if (robot.motors["motor6"].speed >= 145) and (robot.motors["motor3"].speed <= 155):
+  if (robot.motors["motor6"].speed >= 145) and (robot.motors["motor6"].speed <= 155):
     robot.led.set(leds=[7], color='#33cc00')
   else:
     robot.led.set(leds=[7], color='#ff0000')
@@ -123,17 +123,17 @@ while True:
   else:
     robot.led.set(leds=[6], color='#ff0000')
 
-  if (robot.motors["motor4"].speed >= -15) and (robot.motors["motor1"].speed <= -5):
+  if (robot.motors["motor4"].speed >= -15) and (robot.motors["motor4"].speed <= -5):
     robot.led.set(leds=[12], color='#33cc00')
   else:
     robot.led.set(leds=[12], color='#ff0000')
 
-  if (robot.motors["motor5"].speed >= -95) and (robot.motors["motor2"].speed <= -85):
+  if (robot.motors["motor5"].speed >= -95) and (robot.motors["motor5"].speed <= -85):
     robot.led.set(leds=[10], color='#33cc00')
   else:
     robot.led.set(leds=[10], color='#ff0000')
 
-  if (robot.motors["motor6"].speed >= -155) and (robot.motors["motor3"].speed <= -145):
+  if (robot.motors["motor6"].speed >= -155) and (robot.motors["motor6"].speed <= -145):
     robot.led.set(leds=[8], color='#33cc00')
   else:
     robot.led.set(leds=[8], color='#ff0000')
