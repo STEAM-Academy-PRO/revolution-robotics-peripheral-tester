@@ -47,6 +47,9 @@ if __name__ == "__main__":
         config.add_motor_from_json({"type": 1, "name": "motor1"})
         config.add_motor_from_json({"type": 1, "name": "motor2"})
         config.add_motor_from_json({"type": 1, "name": "motor3"})
+        config.add_motor_from_json({"type": 1, "name": "motor4"})
+        config.add_motor_from_json({"type": 1, "name": "motor5"})
+        config.add_motor_from_json({"type": 1, "name": "motor6"})
         config.process_script(
             {
                 "assignments": {"buttons": [{"id": 1, "priority": 0}]},
@@ -58,46 +61,82 @@ while True:
   robot.motors["motor1"].spin(direction=Motor.DIRECTION_FWD, rotation=30, unit_rotation=Motor.UNIT_SPEED_RPM)
   robot.motors["motor2"].spin(direction=Motor.DIRECTION_FWD, rotation=85, unit_rotation=Motor.UNIT_SPEED_RPM)
   robot.motors["motor3"].spin(direction=Motor.DIRECTION_FWD, rotation=135, unit_rotation=Motor.UNIT_SPEED_RPM)  
+  robot.motors["motor4"].spin(direction=Motor.DIRECTION_FWD, rotation=10, unit_rotation=Motor.UNIT_SPEED_RPM)
+  robot.motors["motor5"].spin(direction=Motor.DIRECTION_FWD, rotation=90, unit_rotation=Motor.UNIT_SPEED_RPM)
+  robot.motors["motor6"].spin(direction=Motor.DIRECTION_FWD, rotation=150, unit_rotation=Motor.UNIT_SPEED_RPM)  
   
   time.sleep(3)
 
   if (robot.motors["motor1"].speed >= 25) and (robot.motors["motor1"].speed <= 35):
-    robot.led.set(leds=[1,2], color='#33cc00')
+    robot.led.set(leds=[1], color='#33cc00')
   else:
-    robot.led.set(leds=[1,2], color='#ff0000')
+    robot.led.set(leds=[1], color='#ff0000')
 
   if (robot.motors["motor2"].speed >= 80) and (robot.motors["motor2"].speed <= 90):
-    robot.led.set(leds=[3,4], color='#33cc00')
+    robot.led.set(leds=[3], color='#33cc00')
   else:
-    robot.led.set(leds=[3,4], color='#ff0000')
+    robot.led.set(leds=[3], color='#ff0000')
 
   if (robot.motors["motor3"].speed >= 130) and (robot.motors["motor3"].speed <= 140):
-    robot.led.set(leds=[5,6], color='#33cc00')
+    robot.led.set(leds=[5], color='#33cc00')
   else:
-    robot.led.set(leds=[5,6], color='#ff0000')
+    robot.led.set(leds=[5], color='#ff0000')
+
+  if (robot.motors["motor4"].speed >= 5) and (robot.motors["motor1"].speed <= 15):
+    robot.led.set(leds=[11], color='#33cc00')
+  else:
+    robot.led.set(leds=[11], color='#ff0000')
+
+  if (robot.motors["motor5"].speed >= 85) and (robot.motors["motor2"].speed <= 95):
+    robot.led.set(leds=[9], color='#33cc00')
+  else:
+    robot.led.set(leds=[9], color='#ff0000')
+
+  if (robot.motors["motor6"].speed >= 145) and (robot.motors["motor3"].speed <= 155):
+    robot.led.set(leds=[7], color='#33cc00')
+  else:
+    robot.led.set(leds=[7], color='#ff0000')
 
   time.sleep(1)
   
   robot.motors["motor1"].spin(direction=Motor.DIRECTION_BACK, rotation=30, unit_rotation=Motor.UNIT_SPEED_RPM)
   robot.motors["motor2"].spin(direction=Motor.DIRECTION_BACK, rotation=85, unit_rotation=Motor.UNIT_SPEED_RPM)
   robot.motors["motor3"].spin(direction=Motor.DIRECTION_BACK, rotation=135, unit_rotation=Motor.UNIT_SPEED_RPM)
+  robot.motors["motor4"].spin(direction=Motor.DIRECTION_BACK, rotation=10, unit_rotation=Motor.UNIT_SPEED_RPM)
+  robot.motors["motor5"].spin(direction=Motor.DIRECTION_BACK, rotation=90, unit_rotation=Motor.UNIT_SPEED_RPM)
+  robot.motors["motor6"].spin(direction=Motor.DIRECTION_BACK, rotation=150, unit_rotation=Motor.UNIT_SPEED_RPM)
 
   time.sleep(3)
 
   if (robot.motors["motor1"].speed >= -35) and (robot.motors["motor1"].speed <= -25):
-    robot.led.set(leds=[11,12], color='#33cc00')
+    robot.led.set(leds=[2], color='#33cc00')
   else:
-    robot.led.set(leds=[11,12], color='#ff0000')
+    robot.led.set(leds=[2], color='#ff0000')
 
   if (robot.motors["motor2"].speed >= -90) and (robot.motors["motor2"].speed <= -80):
-    robot.led.set(leds=[9,10], color='#33cc00')
+    robot.led.set(leds=[4], color='#33cc00')
   else:
-    robot.led.set(leds=[9,10], color='#ff0000')
+    robot.led.set(leds=[4], color='#ff0000')
 
   if (robot.motors["motor3"].speed >= -140) and (robot.motors["motor3"].speed <= -130):
-    robot.led.set(leds=[7,8], color='#33cc00')
+    robot.led.set(leds=[6], color='#33cc00')
   else:
-    robot.led.set(leds=[7,8], color='#ff0000')
+    robot.led.set(leds=[6], color='#ff0000')
+
+  if (robot.motors["motor4"].speed >= -15) and (robot.motors["motor1"].speed <= -5):
+    robot.led.set(leds=[12], color='#33cc00')
+  else:
+    robot.led.set(leds=[12], color='#ff0000')
+
+  if (robot.motors["motor5"].speed >= -95) and (robot.motors["motor2"].speed <= -85):
+    robot.led.set(leds=[10], color='#33cc00')
+  else:
+    robot.led.set(leds=[10], color='#ff0000')
+
+  if (robot.motors["motor6"].speed >= -155) and (robot.motors["motor3"].speed <= -145):
+    robot.led.set(leds=[8], color='#33cc00')
+  else:
+    robot.led.set(leds=[8], color='#ff0000')
 
   time.sleep(0.05)  # allow other threads to run
 
