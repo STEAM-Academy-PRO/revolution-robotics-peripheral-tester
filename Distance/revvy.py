@@ -44,8 +44,10 @@ if __name__ == "__main__":
 
     with ProgrammedRobotController(robot_manager) as robot_controller:
         config = RobotConfig()
-        config.add_sensor_from_json(None)
-        config.add_sensor_from_json({"type": 1, "name": "distance_sensor"})
+        config.add_sensor_from_json({"type": 1, "name": "distance_sensor_1"})
+        config.add_sensor_from_json({"type": 1, "name": "distance_sensor_2"})
+        config.add_sensor_from_json({"type": 1, "name": "distance_sensor_3"})
+        config.add_sensor_from_json({"type": 1, "name": "distance_sensor_4"})
         config.process_script(
             {
                 "assignments": {"buttons": [{"id": 1, "priority": 0}]},
@@ -59,20 +61,67 @@ var_i = None
 
 
 while True:
-  var_variable1 = (robot.sensors["distance_sensor"].read()) / 3
+  var_variable1 = (robot.sensors["distance_sensor_1"].read())
+  var_variable1 = (var_variable1 if isinstance(var_variable1, Number) else 0)
+  
+  var_variable2 = (robot.sensors["distance_sensor_2"].read())
+  var_variable2 = (var_variable2 if isinstance(var_variable2, Number) else 0)
+
+  var_variable3 = (robot.sensors["distance_sensor_3"].read())
+  var_variable3 = (var_variable3 if isinstance(var_variable3, Number) else 0)
+
+  var_variable4 = (robot.sensors["distance_sensor_4"].read())
+  var_variable4 = (var_variable4 if isinstance(var_variable4, Number) else 0)
+
   ReportVariableChanged("variable1",var_variable1)
-  var_i = 0
-  ReportVariableChanged("i",var_i)
-  for count in range(int(round(var_variable1))):
-    var_i = (var_i if isinstance(var_i, Number) else 0) + 1
-    ReportVariableChanged("i",var_i)
-    robot.led.set(leds=[(var_i % 12)], color='#009900')
-  var_i = 12
-  ReportVariableChanged("i",var_i)
-  for count2 in range(int(12 - round(var_variable1))):
-    robot.led.set(leds=[var_i], color='#000000')
-    var_i = (var_i if isinstance(var_i, Number) else 0) + -1
-    ReportVariableChanged("i",var_i)
+  ReportVariableChanged("variable2",var_variable2)
+  ReportVariableChanged("variable3",var_variable3)
+  ReportVariableChanged("variable4",var_variable4)
+
+  if (var_variable1 >= 35):
+    robot.led.set(leds=[1,2,3], color='#009900')
+  elif: (var_variable1 < 35) and (var_variable1 >= 25):
+    robot.led.set(leds=[1,2], color='#009900')
+    robot.led.set(leds=[3], color='#000000')
+  elif: (var_variable1 < 25) and (var_variable1 >= 15):
+    robot.led.set(leds=[1], color='#009900')
+    robot.led.set(leds=[2,3], color='#000000')
+  else:
+    robot.led.set(leds=[1,2,3], color='#000000')
+  
+  if (var_variable2 >= 35):
+    robot.led.set(leds=[4,5,6], color='#009900')
+  elif: (var_variable2 < 35) and (var_variable2 >= 25):
+    robot.led.set(leds=[4,5], color='#009900')
+    robot.led.set(leds=[6], color='#000000')
+  elif: (var_variable2 < 25) and (var_variable2 >= 15):
+    robot.led.set(leds=[4], color='#009900')
+    robot.led.set(leds=[5,6], color='#000000')
+  else:
+    robot.led.set(leds=[4,5,6], color='#000000')
+
+  if (var_variable3 >= 35):
+    robot.led.set(leds=[7,8,9], color='#009900')
+  elif: (var_variable3 < 35) and (var_variable3 >= 25):
+    robot.led.set(leds=[7,8], color='#009900')
+    robot.led.set(leds=[9], color='#000000')
+  elif: (var_variable3 < 25) and (var_variable3 >= 15):
+    robot.led.set(leds=[7], color='#009900')
+    robot.led.set(leds=[8,9], color='#000000')
+  else:
+    robot.led.set(leds=[7,8,9], color='#000000')
+
+  if (var_variable4 >= 35):
+    robot.led.set(leds=[10,11,12], color='#009900')
+  elif: (var_variable4 < 35) and (var_variable4 >= 25):
+    robot.led.set(leds=[10,11], color='#009900')
+    robot.led.set(leds=[12], color='#000000')
+  elif: (var_variable4 < 25) and (var_variable4 >= 15):
+    robot.led.set(leds=[10], color='#009900')
+    robot.led.set(leds=[11,12], color='#000000')
+  else:
+    robot.led.set(leds=[10,11,12], color='#000000')
+
   time.sleep(0.05)  # allow other threads to run
 
 
